@@ -72,12 +72,19 @@ detectPersonalLevel();
 
 function writeYourGenres () {
     let answer;
-    for(let i = 0; i < 3; i ++){
+    first: for(let i = 0; i < 3; i ++){
         answer = prompt(`Ваш любимый жанр под номером ${i + 1}`);
-        personalMovieDB.genres[i] = answer;
+        console.log(typeof(answer));
+        if (answer == '' || typeof(answer) !== 'string' || answer <= 3){
+            i--
+            continue first;
+        }else {
+            personalMovieDB.genres[i] = answer;
+        }
     }
 }
 writeYourGenres();
+console.log(personalMovieDB);
 // let lastFilm;
 // let rateFilm;
 // do {
